@@ -6,6 +6,8 @@ import Home from './components/pages/Home';
 import ProductDetails from './components/pages/ProductDetails';
 import SignIn from './components/auth/SignIn';
 import Register from './components/auth/Register';
+import Footer from './components/layout/Footer';
+import ProductsList from './components/pages/ProductsList';
 
 function App() {
   return (
@@ -17,7 +19,10 @@ function App() {
           <Route path='/products/:id' component={ProductDetails} />
           <Route path='/admin/signin' component={SignIn} />
           <Route path='/admin/register' component={Register} />
+          <Route path='/products' component={ProductsList} />
+
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   );
