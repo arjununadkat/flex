@@ -5,9 +5,18 @@ import App from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './features/counter/rootReducer'
-import { createStore } from '@reduxjs/toolkit';
+import { createStore, applyMiddleware, compose } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import firebaseConfig from './config/firebaseConfig'
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(firebaseConfig),
+    reactReduxFirebase(firebaseConfig)
+  ));
 
 ReactDOM.render(
   <React.StrictMode>

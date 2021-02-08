@@ -8,6 +8,7 @@ import SignIn from './components/auth/SignIn';
 import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import ProductsList from './components/pages/ProductsList';
+import CreateProduct from './components/products/CreateProduct';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/admin/signin' component={SignIn} />
           <Route path='/admin/register' component={Register} />
           <Route path='/products' component={ProductsList} />
+          <Route path='/new' component={CreateProduct} />
 
         </Switch>
         <Footer />
