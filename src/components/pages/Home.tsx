@@ -1,10 +1,14 @@
 import React from 'react'
+import GetToKnowUs from '../sections/home/GetToKnowUs'
+import Hero from '../sections/home/Hero'
 
 function Home() {
     return (
         <div>
-            <h1>Home</h1>
+            <Hero />
+            <GetToKnowUs />
         </div>
+
     )
 }
 
