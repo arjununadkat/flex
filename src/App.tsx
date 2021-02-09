@@ -11,6 +11,8 @@ import ProductsList from './components/pages/ProductsList';
 import CreateProduct from './components/products/CreateProduct';
 import ManageProducts from './components/pages/ManageProducts';
 import AboutUs from './components/pages/AboutUs';
+import Contact from './components/pages/Contact';
+import BookDemo from './components/pages/BookDemo';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path='/new' component={CreateProduct} />
           <Route path='/admin/manage' component={ManageProducts} />
           <Route path='/about' component={AboutUs} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/bookdemo' component={BookDemo} />
 
         </Switch>
         <Footer />

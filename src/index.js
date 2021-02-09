@@ -10,6 +10,7 @@ import thunk from 'redux-thunk'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import firebaseConfig from './config/firebaseConfig'
+import { ToastProvider } from 'react-toast-notifications'
 
 const store = createStore(rootReducer,
   compose(
@@ -22,7 +23,9 @@ store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <ToastProvider>
+          <App />
+        </ToastProvider>
       </Provider>
     </React.StrictMode>,
     document.getElementById('root')
