@@ -9,6 +9,7 @@ import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import ProductsList from './components/pages/ProductsList';
 import CreateProduct from './components/products/CreateProduct';
+import ManageProducts from './components/pages/ManageProducts';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/admin/register' component={Register} />
           <Route path='/products' component={ProductsList} />
           <Route path='/new' component={CreateProduct} />
+          <Route path='/admin/manage' component={ManageProducts} />
 
         </Switch>
         <Footer />
