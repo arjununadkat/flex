@@ -1,5 +1,5 @@
 import React from 'react'
-import BenefitsList from '../products/BenefitsList';
+import BenefitsList from '../../products/BenefitsList';
 
 function ProductDetails(props: any) {
     const id = props.match.params.id;
