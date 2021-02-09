@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import AdminLinks from './AdminLinks'
 import GeneralLinks from './GeneralLinks'
+import { connect } from 'react-redux'
 
 function Navbar() {
     return (
@@ -21,4 +22,11 @@ function Navbar() {
     )
 }
 
-export default Navbar
+const mapStateToProps = (state: any) => {
+    console.log(state);
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(Navbar)

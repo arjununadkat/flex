@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { signIn } from '../../features/actions/authActions'
 
 class SignIn extends Component {
     state = {
@@ -9,6 +11,8 @@ class SignIn extends Component {
     handleSubmit = (e: any) => {
         e.preventDefault();
         console.log(this.state);
+        const myProps: any = this.props;
+        myProps.signIn(this.state);
     };
     handleChange = (e: any) => {
         this.setState({
@@ -37,4 +41,16 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapStateToProps = (state: { auth: { authError: any; }; }) => {
+    return {
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch: (arg0: (dispatch: (arg0: { type: string; err?: any; }) => void, getState: any, { getFirebase }: any) => void) => any) => {
+    return {
+        signIn: (creds: { email: string; password: string; }) => dispatch(signIn(creds))
+    }
+}
+
+export default connect<any>(null, mapDispatchToProps)(SignIn)
