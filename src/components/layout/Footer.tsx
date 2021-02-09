@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from '@reduxjs/toolkit';
 import QuickLink from './QuickLink';
+import { iProduct } from '../../global';
 
 class Footer extends Component {
     render() {
@@ -23,9 +24,15 @@ class Footer extends Component {
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
                             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Products</h2>
                             <nav className="list-none mb-10">
-                                {products && products.map((product: { id: string; }) => {
+                                {products && products.map((product: iProduct) => {
                                     return (
-                                        <QuickLink product={product} key={product.id} />
+                                        <QuickLink
+                                            id={product.id}
+                                            product={product.product}
+                                            details={product.details}
+                                            summary={product.summary}
+                                            benefit={product.benefit}
+                                            key={product.id} />
                                     )
                                 })}
                             </nav>

@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import { updateProduct } from '../../../features/actions/productActions'
 import firebase from '../../../config/firebaseConfig'
 import { useToasts } from 'react-toast-notifications'
+import { Redirect } from 'react-router-dom'
 
 function EditProduct(props: any) {
-    console.log(props);
+    const { auth }: any = props;
     const [files, setFiles] = useState<File | null>();
     const { addToast } = useToasts()
     const product: iProduct = {
@@ -70,6 +71,9 @@ function EditProduct(props: any) {
     const onFileChange = (e: any) => {
         setFiles(e.target.files[0]);
     }
+
+    if (!auth.uid) return <Redirect to='/' />
+
     return (
         <div>
             <section className="text-gray-600 body-font relative">
@@ -127,9 +131,15 @@ function EditProduct(props: any) {
         </div >
     )
 }
+const mapStateToProps = (state: { firebase: { auth: any } }) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch: any) => {
     return {
         updateProduct: (product: iProduct) => dispatch(updateProduct(product))
     }
 }
-export default connect(null, mapDispatchToProps)(EditProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProduct)

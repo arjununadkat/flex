@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { iProduct } from '../../global'
 
-function QuickLink({ product }: any) {
+function QuickLink(product: iProduct) {
     return (
         <li>
-            <Link to={`/products/${product.id}`} className="text-gray-600 hover:text-gray-800">{product.product}</Link>
+            <Link to={{
+                pathname: `/products/${product.id}`,
+                state: { product: product }
+            }} className="text-gray-600 hover:text-gray-800">{product.product}</Link>
         </li>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import BenefitsList from '../../products/BenefitsList';
 
 function ProductDetails(props: any) {
@@ -8,7 +9,6 @@ function ProductDetails(props: any) {
     const details = props.location.state.product.details;
     const summary = props.location.state.product.summary;
     const banner = props.location.state.product.banner;
-
 
     return (
         <section className="text-gray-600 body-font">
@@ -23,7 +23,6 @@ function ProductDetails(props: any) {
                                 <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Benefits</h2>
                                 <nav className="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2">
                                     {benefits && benefits.map((item: string) => {
-                                        console.log(item)
                                         return <BenefitsList key={benefits.indexOf(item)} item={item} />
                                     })}
                                 </nav>
@@ -31,11 +30,11 @@ function ProductDetails(props: any) {
                         </div>
                         <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                             <p className="leading-relaxed text-lg mb-4">{summary} <br /> <br /> {details}</p>
-                            <a className="text-blue-500 inline-flex items-center">Book Demo
+                            <Link to="/bookdemo" className="text-blue-500 inline-flex items-center">Book Demo
         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

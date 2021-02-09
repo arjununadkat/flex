@@ -1,16 +1,20 @@
+import firebase from 'firebase'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { createProduct } from '../../features/actions/productActions'
+import { iProduct } from '../../global'
 
 class CreateProduct extends Component<any, any> {
 
     state = {
-        prodID: '',
+        id: '',
         product: '',
         summary: '',
         details: '',
-        benefit: '',
+        benefit: [""],
         banner: '',
+        bannerPath: ''
     }
     onFileChange = (e: any) => {
         this.setState({
@@ -22,15 +26,50 @@ class CreateProduct extends Component<any, any> {
             [e.target.id]: e.target.value
         })
     }
+    handleBenefit = (e: { target: { id: any; value: string } }) => {
+        this.setState({
+            benefit: e.target.value.split("\n")
+        });
+    }
 
     handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        this.props.createProduct(this.state);
+        // this.props.createProduct(this.state);
+        //console.log(this.state);
+        if (this.state.banner !== '') {
+            const files: any = this.state.banner;
+            const filePath = `banners/${new Date().getTime()}-${files.name}`;
+            const storage = firebase.storage();
+            const storageRef = storage.ref(filePath);
+            const uploadTask = storageRef.put(files);
+            uploadTask.on('state_changed', (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                //addToast("Uploading Image " + progress + "%", { appearance: 'info', autoDismiss: true });
+            }, (error) => {
+                console.log(error)
+            }, () => {
+                uploadTask.snapshot.ref.getDownloadURL().then(async (downloadURL) => {
+                    try {
+                        // addToast("Uploaded Image", { appearance: 'success', autoDismiss: true });
+                        const fileLocation = uploadTask.snapshot.ref.fullPath;
+                        this.state.bannerPath = fileLocation;
+                        this.state.banner = downloadURL;
+                        //create a reference to the file to delete
+                        // addToast("Updated Image", { appearance: 'success' })
+                        this.props.createProduct(this.state);
+                    } catch (err) {
+                        console.log(err)
+                    }
+                })
+            });
+        }
 
 
     }
 
     render() {
+        const { auth }: any = this.props;
+        if (!auth.uid) return <Redirect to='/' />
         return (
             <section className="text-gray-600 body-font relative">
                 <div className="container px-5 py-24 mx-auto">
@@ -42,8 +81,8 @@ class CreateProduct extends Component<any, any> {
                         <div className="flex flex-wrap -m-2">
                             <div className="p-2 w-full">
                                 <div className="relative">
-                                    <label htmlFor="prodID" className="leading-7 text-sm text-gray-600">Product ID consider appending the product name to flex- </label>
-                                    <input type="text" id="prodID" placeholder="flex-new-product" onChange={this.handleChange} name="prodID" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <label htmlFor="id" className="leading-7 text-sm text-gray-600">Product ID consider appending the product name to flex- </label>
+                                    <input type="text" id="id" placeholder="flex-new-product" onChange={this.handleChange} name="id" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="p-2 w-full">
@@ -75,7 +114,7 @@ class CreateProduct extends Component<any, any> {
                             <div className="p-2 w-full">
                                 <div className="relative">
                                     <label htmlFor="benefits" className="leading-7 text-sm text-gray-600">Product Benefits (Put each benefit on its own line)</label>
-                                    <textarea id="benefits" name="benefits" onChange={this.handleChange} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    <textarea id="benefits" name="benefits" onChange={this.handleBenefit} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                 </div>
                             </div>
 
@@ -90,9 +129,16 @@ class CreateProduct extends Component<any, any> {
         )
     }
 }
-const mapDispatchToProps = (dispatch: any) => {
+
+const mapStateToProps = (state: { firebase: { auth: any } }) => {
     return {
-        createProduct: (product: any) => dispatch(createProduct(product))
+        auth: state.firebase.auth
     }
 }
-export default connect(null, mapDispatchToProps)(CreateProduct)
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        createProduct: (product: iProduct) => dispatch(createProduct(product))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct)

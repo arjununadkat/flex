@@ -14,6 +14,8 @@ import AboutUs from './components/pages/AboutUs';
 import Contact from './components/pages/Contact';
 import BookDemo from './components/pages/BookDemo';
 import EditProduct from './components/sections/products-admin/EditProduct';
+import DeleteProduct from './components/sections/products-admin/DeleteProduct';
+
 
 function App() {
   return (
@@ -26,12 +28,13 @@ function App() {
           <Route path='/admin/signin' component={SignIn} />
           <Route path='/admin/register' component={Register} />
           <Route path='/products' component={ProductsList} />
-          <Route path='/new' component={CreateProduct} />
+          <Route path='/admin/newproduct' component={CreateProduct} />
           <Route path='/admin/manage' component={ManageProducts} />
           <Route path='/about' component={AboutUs} />
           <Route path='/contact' component={Contact} />
           <Route path='/bookdemo' component={BookDemo} />
           <Route path='/admin/edit/:id' component={EditProduct} />
+          <Route path='/admin/delete/:id' component={DeleteProduct} />
         </Switch>
         <Footer />
       </div>
