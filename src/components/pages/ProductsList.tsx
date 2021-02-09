@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ProductListItem from '../products/ProductListItem'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from '@reduxjs/toolkit';
 
 
 class ProductsList extends Component {
@@ -14,7 +16,7 @@ class ProductsList extends Component {
                         <br className="hidden sm:block" />Selfies Wayfarers
                     </h1>
                     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-                        {products && products.map((product: any) => {
+                        {products && products.map((product: { id: string; }) => {
                             return (
                                 <ProductListItem product={product} key={product.id} />
                             )
@@ -30,10 +32,14 @@ class ProductsList extends Component {
 
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { firestore: { ordered: { Products: any; }; }; product: { products: any; }; }) => {
+    console.log(state);
     return {
-        products: state.product.products
+        products: state.firestore.ordered.Products
     }
 }
 
-export default connect(mapStateToProps)(ProductsList)
+export default compose<any>(
+    connect(mapStateToProps),
+    firestoreConnect(['Products'])
+)(ProductsList)
