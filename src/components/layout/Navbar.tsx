@@ -4,7 +4,10 @@ import AdminLinks from './AdminLinks'
 import GeneralLinks from './GeneralLinks'
 import { connect } from 'react-redux'
 
-function Navbar() {
+function Navbar(props: any) {
+    const { auth } = props;
+    console.log(auth);
+    const links = auth.uid;
     return (
         <header className="text-gray-600 body-font">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -14,8 +17,9 @@ function Navbar() {
                     </svg>
                     <span className="ml-3 text-xl">Tailblocks</span>
                 </Link>
-                <GeneralLinks />
-                <AdminLinks />
+                {!links ? <GeneralLinks /> : (
+                    <AdminLinks />
+                )}
             </div>
         </header>
 
@@ -23,9 +27,8 @@ function Navbar() {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state);
     return {
-
+        auth: state.firebase.auth
     }
 }
 
