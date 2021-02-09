@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 class Register extends Component {
     state = {
         email: '',
@@ -18,6 +19,8 @@ class Register extends Component {
     };
 
     render() {
+        const { authError, auth }: any = this.props;
+        if (auth.uid) return <Redirect to='/' />z
         return (
             <div>
                 <form className="mx-auto md:w-1/3 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
@@ -41,5 +44,11 @@ class Register extends Component {
         )
     }
 }
+const mapStateToProps = (state: any) => {
+    return {
+        authError: state.auth.authError,
+        auth: state.firebase.auth
+    }
+}
 
-export default Register
+export default connect(mapStateToProps)(Register)
