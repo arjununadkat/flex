@@ -20,7 +20,11 @@ class SignIn extends Component {
         })
     };
 
+
     render() {
+        const { authError, auth }: any = this.props;
+        console.log(this.props);
+        if (auth.uid) return <Redirect to='/' />
         return (
             <div>
                 <form className="mx-auto md:w-1/3 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
@@ -41,17 +45,17 @@ class SignIn extends Component {
     }
 }
 
-const mapStateToProps = (state: { auth: { authError: any }; firebase: { auth: any } }) => {
+const mapStateToProps = (state: any) => {
     return {
         authError: state.auth.authError,
         auth: state.firebase.auth
     }
 }
 
-const mapDispatchToProps = (dispatch: (arg0: (dispatch: (arg0: { type: string; err?: any; }) => void, getState: any, { getFirebase }: any) => void) => any) => {
+const mapDispatchToProps: any = (dispatch: any) => {
     return {
         signIn: (creds: { email: string; password: string; }) => dispatch(signIn(creds))
     }
 }
 
-export default connect<any>(null, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
