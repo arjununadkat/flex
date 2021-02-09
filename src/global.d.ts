@@ -7,6 +7,7 @@ export type iService = {
 export type iProduct = {
     id: string,
     banner?: string,
+    bannerPath?: string,
     benefit: Array<string>,
     details: string,
     product: string,

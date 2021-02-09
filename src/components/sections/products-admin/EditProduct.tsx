@@ -1,25 +1,75 @@
 import React, { useState } from 'react'
 import { iProduct } from '../../../global'
+import { connect } from 'react-redux'
+import { updateProduct } from '../../../features/actions/productActions'
+import firebase from '../../../config/firebaseConfig'
+import { useToasts } from 'react-toast-notifications'
 
-function EditProduct(props: { location: { state: { product: { product: string; banner: string; summary: string; benefit: Array<string>; description: string; details: string; }; }; }; match: { params: { id: any; }; }; }) {
+function EditProduct(props: any) {
     console.log(props);
     const [files, setFiles] = useState<File | null>();
+    const { addToast } = useToasts()
     const product: iProduct = {
         product: props.location.state.product.product,
         id: props.match.params.id,
         banner: props.location.state.product.banner,
+        bannerPath: props.location.state.product.bannerPath,
         summary: props.location.state.product.summary,
         benefit: props.location.state.product.benefit,
         details: props.location.state.product.details
     }
 
     const updateDocument = async () => {
+        if (!files) {
+            props.updateProduct(product);
+        } else {
+            //delete the banner in the storage
+            //upload new one
+            //get the path
+            //set it to the document
+            const filePath = `banners/${new Date().getTime()}-${files.name}`;
+            const storage = firebase.storage();
+            const storageRef = storage.ref(filePath);
+            const uploadTask = storageRef.put(files);
+            uploadTask.on('state_changed', (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                addToast("Uploading Image " + progress + "%", { appearance: 'info', autoDismiss: true });
+            }, (error) => {
+                console.log(error)
+            }, () => {
+                uploadTask.snapshot.ref.getDownloadURL().then(async (downloadURL) => {
+                    try {
+                        addToast("Uploaded Image", { appearance: 'success', autoDismiss: true });
+                        const fileLocation = uploadTask.snapshot.ref.fullPath;
+
+                        //create a reference to the file to delete
+
+                        if (product.bannerPath && product.banner) {
+                            var desertRef = storageRef.child(product.bannerPath);
+                            product.bannerPath = fileLocation;
+                            product.banner = downloadURL;
+                            desertRef.delete().then(function () {
+                                // File deleted successfully
+                                addToast("Deleted Image", { appearance: 'success', autoDismiss: true })
+                            }).catch(function (error) {
+                                // window.location.reload();
+                                addToast(error, { appearance: 'error', autoDismiss: true })
+                            });
+                        }
+                        addToast("Updated Image", { appearance: 'success' })
+                        props.updateProduct(product);
+                    } catch (err) {
+                        console.log(err)
+                    }
+                })
+            });
+        }
         console.log(product);
+
     }
     const onFileChange = (e: any) => {
         setFiles(e.target.files[0]);
     }
-
     return (
         <div>
             <section className="text-gray-600 body-font relative">
@@ -77,5 +127,9 @@ function EditProduct(props: { location: { state: { product: { product: string; b
         </div >
     )
 }
-
-export default EditProduct
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        updateProduct: (product: iProduct) => dispatch(updateProduct(product))
+    }
+}
+export default connect(null, mapDispatchToProps)(EditProduct)

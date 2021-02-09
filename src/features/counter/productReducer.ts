@@ -8,10 +8,16 @@ const initState = {
 const productReducer = (state = initState, action: any) => {
     switch (action.type) {
         case 'CREATE_PRODUCT':
-            console.log('created project', action.project)
+            console.log('created product', action.product)
             return state;
         case 'CREATE_PRODUCT_ERROR':
-            console.log('create project error', action.err)
+            console.log('create product error', action.err)
+            return state;
+        case 'UPDATE_PRODUCT':
+            console.log('updated product', action.product)
+            return state;
+        case 'UPDATE_PRODUCT_ERROR':
+            console.log('update product failed', action.err)
             return state;
         default:
             return state;
