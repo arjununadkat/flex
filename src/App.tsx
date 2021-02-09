@@ -13,6 +13,7 @@ import ManageProducts from './components/pages/ManageProducts';
 import AboutUs from './components/pages/AboutUs';
 import Contact from './components/pages/Contact';
 import BookDemo from './components/pages/BookDemo';
+import EditProduct from './components/sections/products-admin/EditProduct';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path='/about' component={AboutUs} />
           <Route path='/contact' component={Contact} />
           <Route path='/bookdemo' component={BookDemo} />
-
+          <Route path='/admin/edit/:id' component={EditProduct} />
         </Switch>
         <Footer />
       </div>
