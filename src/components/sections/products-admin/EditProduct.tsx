@@ -20,6 +20,8 @@ function EditProduct(props: any) {
         details: props.location.state.product.details
     }
 
+    //console.log(product);
+
     const updateDocument = async () => {
         if (!files) {
             props.updateProduct(product);
@@ -30,8 +32,9 @@ function EditProduct(props: any) {
             //set it to the document
             const filePath = `banners/${new Date().getTime()}-${files.name}`;
             const storage = firebase.storage();
-            const storageRef = storage.ref(filePath);
-            const uploadTask = storageRef.put(files);
+            const storageRef = storage.ref();
+            const imageRef = storageRef.child(filePath);
+            const uploadTask = imageRef.put(files);
             uploadTask.on('state_changed', (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 addToast("Uploading Image " + progress + "%", { appearance: 'info', autoDismiss: true });
@@ -43,25 +46,34 @@ function EditProduct(props: any) {
                         addToast("Uploaded Image", { appearance: 'success', autoDismiss: true });
                         const fileLocation = uploadTask.snapshot.ref.fullPath;
 
-                        //create a reference to the file to delete
 
+                        //create a reference to the file to delete
                         if (product.bannerPath && product.banner) {
                             var desertRef = storageRef.child(product.bannerPath);
-                            product.bannerPath = fileLocation;
-                            product.banner = downloadURL;
-                            desertRef.delete().then(function () {
-                                // File deleted successfully
+                            console.log(product.bannerPath)
+                            console.log("File path to delete", desertRef);
+
+
+                            console.log("Banner: ", product.banner);
+                            desertRef.delete().then(() => {
+                                //     // File deleted successfully
                                 addToast("Deleted Image", { appearance: 'success', autoDismiss: true })
-                            }).catch(function (error) {
+                            }).catch((error) => {
                                 // window.location.reload();
                                 addToast(error, { appearance: 'error', autoDismiss: true })
                             });
                         }
-                        addToast("Updated Image", { appearance: 'success' })
-                        props.updateProduct(product);
+                        product.bannerPath = fileLocation;
+                        product.banner = downloadURL;
+                        addToast("Updated Image", { appearance: 'success', autoDismiss: true })
                     } catch (err) {
                         console.log(err)
                     }
+                    console.log("REF:", storageRef);
+                    console.log("Path:", product.bannerPath);
+                    console.log("Banner:", product.banner);
+                    props.updateProduct(product);
+
                 })
             });
         }

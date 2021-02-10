@@ -21,6 +21,7 @@ class ManageProducts extends Component {
                                 <ProductListItemAdmin
                                     product={product.product}
                                     banner={product.banner}
+                                    bannerPath={product.bannerPath}
                                     benefit={product.benefit}
                                     summary={product.summary}
                                     details={product.details}
