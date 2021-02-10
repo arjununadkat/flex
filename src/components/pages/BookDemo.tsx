@@ -13,7 +13,7 @@ function BookDemo(props: any) {
     const [startDate, setStartDate]: any = useState(new Date());
     const [endDate, setEndDate]: any = useState(new Date());
     const { products }: any = props;
-    const state: any = {
+    var state: any = {
         startDate: '',
         endDate: '',
         email: '',
@@ -24,8 +24,27 @@ function BookDemo(props: any) {
         questions: '',
         product_name: ''
     }
-    const sendEmail = (e: any) => {
+    const sendEmail = async (e: any) => {
         e.preventDefault();
+        emailjs.send('service_agyidqo', 'template_p7zgu7k', state, 'user_4pxbqRR0umxRjmcz8T0Nc')
+            .then((response) => {
+                console.log("success");
+                state = {
+                    startDate: '',
+                    endDate: '',
+                    email: '',
+                    last_name: '',
+                    first_name: '',
+                    phone_number: '',
+                    address: '',
+                    questions: '',
+                    product_name: ''
+                }
+
+            }, function (error) {
+                console.log(error)
+            });
+
         state.startDate = startDate;
         state.endDate = endDate;
         console.log(state);
@@ -53,7 +72,7 @@ function BookDemo(props: any) {
                             <DatePicker selected={startDate} onChange={date => state.startDate = date && setStartDate(date)} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             <DatePicker selected={endDate} onChange={date => state.endDate = date && setEndDate(date)} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
-                        <div className="relative mb-4">
+                        <div className="relative mb-4 text-gray-900">
                             <p className="leading-7 text-sm text-gray-100">Select your Product</p>
                             <Select options={data} onChange={selectedOption /* type is automatically inferred here */ => {
                                 if (Array.isArray(selectedOption)) {
