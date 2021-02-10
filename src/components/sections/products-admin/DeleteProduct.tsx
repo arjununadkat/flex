@@ -22,12 +22,11 @@ function DeleteProduct(props: any) {
     }
 
     const { addToast } = useToasts()
-    const backToList = (e: any) => {
-        return <Redirect to='/admin/manage' />
-    }
+
     const deleteProduct = (e: any) => {
         //deleteProduct
         props.deleteProduct(product, addToast);
+        props.history.push('/admin/manage');
     }
     const { auth }: any = props;
 

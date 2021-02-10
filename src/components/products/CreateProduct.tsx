@@ -60,6 +60,8 @@ class CreateProduct extends Component<any, any> {
                     } catch (err) {
                         console.log(err)
                     }
+                }).then(() => {
+                    this.props.history.push('/admin/manage');
                 })
             });
         }

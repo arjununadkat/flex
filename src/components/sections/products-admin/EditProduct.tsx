@@ -24,7 +24,7 @@ function EditProduct(props: any) {
 
     const updateDocument = async () => {
         if (!files) {
-            props.updateProduct(product);
+            props.updateProduct(product, props);
         } else {
             //delete the banner in the storage
             //upload new one
@@ -72,8 +72,7 @@ function EditProduct(props: any) {
                     console.log("REF:", storageRef);
                     console.log("Path:", product.bannerPath);
                     console.log("Banner:", product.banner);
-                    props.updateProduct(product);
-
+                    props.updateProduct(product, props);
                 })
             });
         }
@@ -105,6 +104,7 @@ function EditProduct(props: any) {
                                 </div>
                             </div>
                             <div className="p-2 w-full">
+                                <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src={product.banner} />
                                 <div className="relative">
                                     <label htmlFor="banner" className="leading-7 text-sm text-gray-600">Change product banner</label>
                                     <input type="file" id="banner" name="banner" onChange={onFileChange} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -151,7 +151,7 @@ const mapStateToProps = (state: { firebase: { auth: any } }) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        updateProduct: (product: iProduct) => dispatch(updateProduct(product))
+        updateProduct: (product: iProduct, props: any) => dispatch(updateProduct(product, props))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditProduct)
