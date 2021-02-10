@@ -11,7 +11,7 @@ function ProductDetails(props: any) {
     const banner = props.location.state.product.banner;
 
     return (
-        <section className="text-gray-600 body-font">
+        <section className="bg-gray-800 text-gray-100 body-font">
             <div className="container px-5 py-24 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
                     <div className="rounded-lg h-64 overflow-hidden">
@@ -20,7 +20,7 @@ function ProductDetails(props: any) {
                     <div className="flex flex-col sm:flex-row mt-10">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                             <div className="flex flex-col items-center text-center justify-center">
-                                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Benefits</h2>
+                                <h2 className="font-medium title-font mt-4 text-white text-lg">Benefits</h2>
                                 <nav className="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2">
                                     {benefits && benefits.map((item: string) => {
                                         return <BenefitsList key={benefits.indexOf(item)} item={item} />

@@ -31,6 +31,8 @@ class Footer extends Component {
                                         <QuickLink
                                             id={product.id}
                                             product={product.product}
+                                            banner={product.banner}
+                                            bannerPath={product.bannerPath}
                                             details={product.details}
                                             summary={product.summary}
                                             benefit={product.benefit}
