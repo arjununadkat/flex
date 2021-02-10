@@ -11,23 +11,27 @@ function Home(props: { products: Array<iProduct> }) {
     const products = props.products;
     console.log(products);
     return (
-        <div>
+        <div className="bg-gray-800">
             <Hero />
-            <GetToKnowUs />
-            <div className="flex flex-wrap">
-                {products && products.slice(0, 4).map((product: iProduct) => {
-                    return (
-                        <HomeProductsList
-                            id={product.id}
-                            product={product.product}
-                            details={product.details}
-                            summary={product.summary}
-                            benefit={product.benefit}
-                            key={product.id} />
-                    )
-                })}
+            <section className="text-gray-400 body-font bg-gray-900" >
+                <GetToKnowUs />
+                <div className="flex flex-wrap">
+                    {products && products.slice(0, 4).map((product: iProduct) => {
+                        return (
+                            <HomeProductsList
+                                id={product.id}
+                                product={product.product}
+                                details={product.details}
+                                summary={product.summary}
+                                benefit={product.benefit}
+                                key={product.id} />
+                        )
+                    })}
 
-            </div>
+                </div>
+            </section>
+
+
         </div>
 
     )

@@ -33,7 +33,7 @@ class Contact extends Component {
     render() {
 
         return (
-            <section className="text-gray-600 body-font relative">
+            <section className="bg-gray-800 text-gray-100 body-font relative">
                 <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
                     <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
                         <iframe width="100%" height="100%" title="map" className="absolute inset-0 map" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>                    <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
@@ -49,20 +49,20 @@ class Contact extends Component {
                             </div>
                         </div>
                     </div>
-                    <form onSubmit={this.handleSubmit} className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-                        <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">Feedback</h2>
-                        <p className="leading-relaxed mb-5 text-gray-600">Have some questions for us?</p>
+                    <form onSubmit={this.handleSubmit} className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+                        <h2 className="text-gray-200 text-lg mb-1 font-medium title-font">Feedback</h2>
+                        <p className="leading-relaxed mb-5 text-gray-100">Have some questions for us?</p>
                         <div className="relative mb-4">
-                            <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
+                            <label htmlFor="name" className="leading-7 text-sm text-gray-100">Name</label>
                             <input type="text" id="name" name="name" onChange={this.handleChange} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className="relative mb-4">
-                            <label htmlFor="from_email" className="leading-7 text-sm text-gray-600">Email</label>
+                            <label htmlFor="from_email" className="leading-7 text-sm text-gray-100">Email</label>
                             <input type="email" id="from_email" name="from_email" onChange={this.handleChange} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
-                            <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
+                            <label htmlFor="message" className="leading-7 text-sm text-gray-100">Message</label>
                             <textarea id="message" name="message" onChange={this.handleChange} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" type='submit'>Send</button>

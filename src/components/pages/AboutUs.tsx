@@ -7,8 +7,11 @@ function AboutUs() {
     return (
         <div>
             <Values />
-            <History />
-            <OtherServices />
+            <div className="bg-gray-900">
+                <History />
+                <OtherServices />
+            </div>
+
         </div>
     )
 }

@@ -10,10 +10,10 @@ class ProductsList extends Component {
         //console.log(this.props)
         const { products }: any = this.props;
         return (
-            <section className="text-gray-600 body-font">
+            <section className="bg-gray-800 text-gray-200 body-font">
                 <div className="container px-5 py-24 mx-auto">
-                    <h1 className="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20">Raw Denim Heirloom Man Braid
-                        <br className="hidden sm:block" />Selfies Wayfarers
+                    <h1 className="sm:text-3xl text-2xl font-medium title-font text-center text-gray-200 mb-20">Flex Suite
+                        <br className="hidden sm:block" />Have a look at our products
                     </h1>
                     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
                         {products && products.map((product: { id: string; }) => {

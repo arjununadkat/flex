@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { iProduct } from '../../../global'
 function HomeProductsList(product: iProduct) {
     return (
-        <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-            <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">{product.product}</h2>
+        <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-800">
+            <h2 className="text-lg sm:text-xl text-white font-medium title-font mb-2">{product.product}</h2>
             <p className="leading-relaxed text-base mb-4">{product.summary}</p>
             <Link to={{
                 pathname: `/products/${product.id}`,

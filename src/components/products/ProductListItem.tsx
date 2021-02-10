@@ -5,7 +5,7 @@ function ProductListItem({ product }: any) {
     return (
         <div className="p-4 md:w-1/3 flex">
             <div className="flex-grow pl-6">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-2">{product.product}</h2>
+                <h2 className="text-gray-100 text-lg title-font font-medium mb-2">{product.product}</h2>
                 <p className="leading-relaxed text-base">{product.summary}</p>
                 <Link
                     to={{

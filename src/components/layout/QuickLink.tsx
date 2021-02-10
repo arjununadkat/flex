@@ -8,7 +8,7 @@ function QuickLink(product: iProduct) {
             <Link to={{
                 pathname: `/products/${product.id}`,
                 state: { product: product }
-            }} className="text-gray-600 hover:text-gray-800">{product.product}</Link>
+            }} className="text-gray-400 hover:text-gray-200">{product.product}</Link>
         </li>
     )
 }
