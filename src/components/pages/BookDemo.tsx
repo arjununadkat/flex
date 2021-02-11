@@ -14,8 +14,8 @@ function BookDemo(props: any) {
     const [endDate, setEndDate]: any = useState(new Date());
     const { products }: any = props;
     var state: any = {
-        startDate: '',
-        endDate: '',
+        date_from: '',
+        date_to: '',
         email: '',
         last_name: '',
         first_name: '',
@@ -24,14 +24,20 @@ function BookDemo(props: any) {
         questions: '',
         product_name: ''
     }
+    const formatDate = (dateString: string) => {
+        const options = { year: "numeric", month: "long", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+    }
     const sendEmail = async (e: any) => {
         e.preventDefault();
+        state.date_from = formatDate(startDate);
+        state.date_to = formatDate(endDate);
         emailjs.send('service_agyidqo', 'template_p7zgu7k', state, 'user_4pxbqRR0umxRjmcz8T0Nc')
             .then((response) => {
                 console.log("success");
                 state = {
-                    startDate: '',
-                    endDate: '',
+                    date_from: '',
+                    date_to: '',
                     email: '',
                     last_name: '',
                     first_name: '',
@@ -45,8 +51,7 @@ function BookDemo(props: any) {
                 console.log(error)
             });
 
-        state.startDate = startDate;
-        state.endDate = endDate;
+
         console.log(state);
     };
     console.log("Product:", products);
