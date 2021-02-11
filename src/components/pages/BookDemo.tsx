@@ -13,6 +13,7 @@ function BookDemo(props: any) {
     const [startDate, setStartDate]: any = useState(new Date());
     const [endDate, setEndDate]: any = useState(new Date());
     const { products }: any = props;
+    const { addToast } = useToasts();
     var state: any = {
         date_from: '',
         date_to: '',
@@ -35,6 +36,8 @@ function BookDemo(props: any) {
         emailjs.send('service_agyidqo', 'template_p7zgu7k', state, 'user_4pxbqRR0umxRjmcz8T0Nc')
             .then((response) => {
                 console.log("success");
+                addToast(state.product_name + " booking has been made", { appearance: 'success', autoDismiss: true });
+                props.history.push('/');
                 state = {
                     date_from: '',
                     date_to: '',
