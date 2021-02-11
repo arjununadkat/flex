@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import ProductListItemAdmin from '../sections/products-admin/ProductListItemAdmin';
 class ManageProducts extends Component {
     render() {
+        window.scrollTo(0, 0); //scrolls to top on redirect
         const { products, auth }: any = this.props;
         if (!auth.uid) return <Redirect to='/' />
         return (

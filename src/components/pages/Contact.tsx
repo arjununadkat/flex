@@ -75,6 +75,7 @@ function Contact(props: any) {
 }
 const mapStateToProps = (state: any) => {
     console.log(state);
+    return state;
 }
 export default compose<any>(
     connect(mapStateToProps)
