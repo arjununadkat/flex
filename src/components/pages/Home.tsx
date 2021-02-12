@@ -11,7 +11,6 @@ function Home(props: { products: Array<iProduct> }) {
     const products = props.products;
     console.log(products);
     window.scrollTo(0, 0); //scrolls to top on redirect
-
     return (
         <div className="bg-gray-800">
             <Hero />
@@ -32,8 +31,6 @@ function Home(props: { products: Array<iProduct> }) {
 
                 </div>
             </section>
-
-
         </div>
 
     )

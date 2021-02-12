@@ -16,7 +16,6 @@ import BookDemo from './components/pages/BookDemo';
 import EditProduct from './components/sections/products-admin/EditProduct';
 import DeleteProduct from './components/sections/products-admin/DeleteProduct';
 
-
 function App() {
   return (
     <BrowserRouter>

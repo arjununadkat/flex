@@ -13,3 +13,10 @@ export type iProduct = {
     product: string,
     summary: string
 }
+export type iHeroItem = {
+    subTitle: string,
+    title: string,
+    link: string,
+    buttonText: string,
+}
+declare module '*.mp4';
