@@ -34,6 +34,7 @@ function App() {
           <Route path='/bookdemo' component={BookDemo} />
           <Route path='/admin/edit/:id' component={EditProduct} />
           <Route path='/admin/delete/:id' component={DeleteProduct} />
+
         </Switch>
         <Footer />
       </div>

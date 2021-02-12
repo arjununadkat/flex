@@ -19,4 +19,4 @@ export type iHeroItem = {
     link: string,
     buttonText: string,
 }
-declare module '*.mp4';
+
