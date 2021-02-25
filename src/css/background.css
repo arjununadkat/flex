@@ -3,6 +3,12 @@
 }
 
 .hero-header {
-  background-image: url("http://i.stack.imgur.com/kx8MT.gif");
+  background-image: url("../images/bokeh.gif");
   background-size: cover;
+}
+
+.home{
+
+  background: #00A6D3;
+
 }
