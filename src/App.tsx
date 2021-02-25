@@ -11,6 +11,8 @@ import ProductsList from './components/pages/ProductsList';
 import CreateProduct from './components/products/CreateProduct';
 import ManageProducts from './components/pages/ManageProducts';
 import AboutUs from './components/pages/AboutUs';
+import Services from './components/pages/Services';
+import Unified from './components/sections/services/Unified'
 import Contact from './components/pages/Contact';
 import BookDemo from './components/pages/BookDemo';
 import EditProduct from './components/sections/products-admin/EditProduct';
@@ -30,6 +32,8 @@ function App() {
           <Route path='/admin/newproduct' component={CreateProduct} />
           <Route path='/admin/manage' component={ManageProducts} />
           <Route path='/about' component={AboutUs} />
+          <Route path='/services' component={Services} />
+          <Route path='/services/unified' component={Unified} />
           <Route path='/contact' component={Contact} />
           <Route path='/bookdemo' component={BookDemo} />
           <Route path='/admin/edit/:id' component={EditProduct} />

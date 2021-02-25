@@ -14,7 +14,7 @@ function Contact(props: any) {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        emailjs.send('service_agyidqo', 'template_hcq1axf', state, 'user_4pxbqRR0umxRjmcz8T0Nc')
+        emailjs.send('service_rknsu22', 'template_6ti6imp', state, 'user_1K7iFuLrnPpj0q229qWgJ')
             .then((response) => {
                 console.log("success");
                 addToast("Your email has been sent", { appearance: 'success', autoDismiss: true });

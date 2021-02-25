@@ -33,7 +33,7 @@ function BookDemo(props: any) {
         e.preventDefault();
         state.date_from = formatDate(startDate);
         state.date_to = formatDate(endDate);
-        emailjs.send('service_agyidqo', 'template_p7zgu7k', state, 'user_4pxbqRR0umxRjmcz8T0Nc')
+        emailjs.send('service_rknsu22', 'template_7fhfxst', state, 'user_1K7iFuLrnPpj0q229qWgJ')
             .then((response) => {
                 console.log("success");
                 addToast(state.product_name + " booking has been made", { appearance: 'success', autoDismiss: true });

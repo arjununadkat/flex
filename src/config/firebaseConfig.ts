@@ -4,13 +4,13 @@ import 'firebase/auth'
 import 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCAOLsTp-Guuxyt9kETTNDmC85vOpjNW50",
-    authDomain: "flexsuite-edfeb.firebaseapp.com",
-    projectId: "flexsuite-edfeb",
-    storageBucket: "flexsuite-edfeb.appspot.com",
-    messagingSenderId: "940250401446",
-    appId: "1:940250401446:web:db6ed66973e42da29a4267",
-    measurementId: "G-HQV031W3ZQ"
+    apiKey: "AIzaSyBxOiANzuwPRF5w_9nUGXJ5_NnWF33TG4o",
+    authDomain: "flex-softwaresuite-website.firebaseapp.com",
+    projectId: "flex-softwaresuite-website",
+    storageBucket: "flex-softwaresuite-website.appspot.com",
+    messagingSenderId: "74668630082",
+    appId: "1:74668630082:web:cd37a774bd1ceb54460ddb",
+    measurementId: "G-1Y6J25W8BM"
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -27,12 +27,17 @@ class Hero extends Component {
                                 link="/products"
                             />
                             <HeroSection subTitle="Presenting..."
-                                title="Flex Software Suite"
+                                title="Arjun Unadkat"
+                                buttonText="Learn More"
+                                link="/products"
+                            />
+                            <HeroSection subTitle="Presenting..."
+                                title="Ellis Lakhani"
                                 buttonText="Learn More"
                                 link="/products"
                             />
                         </Slider>
-
+                        
                     </div>
                 </header>
 
