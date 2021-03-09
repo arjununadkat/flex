@@ -17,6 +17,7 @@ import Contact from './components/pages/Contact';
 import BookDemo from './components/pages/BookDemo';
 import EditProduct from './components/sections/products-admin/EditProduct';
 import DeleteProduct from './components/sections/products-admin/DeleteProduct';
+import ServiceItem from './components/pages/ServiceItem';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           <Route path='/admin/manage' component={ManageProducts} />
           <Route path='/about' component={AboutUs} />
           <Route path='/services' component={Services} />
-          <Route path='/services/unified' component={Unified} />
+          <Route path='/services/:id' component={ServiceItem} />
           <Route path='/contact' component={Contact} />
           <Route path='/bookdemo' component={BookDemo} />
           <Route path='/admin/edit/:id' component={EditProduct} />

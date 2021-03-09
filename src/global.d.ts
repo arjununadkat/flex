@@ -1,7 +1,9 @@
 export type iService = {
+    id: string,
     title: string,
     description: string,
-    link: string
+    link: string,
+    imagePath:string
 }
 
 export type iProduct = {
