@@ -1,6 +1,7 @@
 {
   "name": "flex-suite",
   "version": "0.1.0",
+  "homepage": "https://arjununadkat.com/cits",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.0.0",
