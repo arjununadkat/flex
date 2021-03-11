@@ -36,16 +36,16 @@ function Contact(props: any) {
         <section className="bg-gray-800 text-gray-100 body-font relative">
             <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
                 <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-                    <iframe width="100%" height="100%" title="map" className="absolute inset-0 map" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>                    <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+                    <iframe width="100%" height="100%" title="map" className="absolute inset-0 map" frameBorder="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3962.081511000411!2d39.248753801852395!3d-6.7599150706201785!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4c333ab584af%3A0x96e85df13ce7d8a8!2sCORPORATE%20INFORMATION%20TECHNOLOGY%20SOLUTIONS!5e0!3m2!1sen!2stz!4v1615361140120!5m2!1sen!2stz"></iframe>                    <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
                         <div className="lg:w-1/2 px-6">
                             <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
-                            <p className="mt-1">Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
+                            <p className="mt-1 text-gray-900">P.O.BOX 34603, Abla complex 2nd floor office No: 202, Rose Garden Road, Mikocheni A, Dar es Salaam</p>
                         </div>
                         <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
                             <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                            <a className="text-blue-500 leading-relaxed">example@email.com</a>
+                            <a className="text-blue-500 leading-relaxed">frontdesk@cits.co.tz</a>
                             <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                            <p className="leading-relaxed">+255 222 771 368</p>
+                            <p className="leading-relaxed text-gray-900">+255 222 771 368</p>
                         </div>
                     </div>
                 </div>

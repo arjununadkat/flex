@@ -9,7 +9,7 @@ function AboutUs() {
             <Values />
             <div className="bg-gray-900">
                 <History />
-                <OtherServices />
+                
             </div>
 
         </div>

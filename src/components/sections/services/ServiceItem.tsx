@@ -8,7 +8,7 @@ function ServiceItem(service: iService) {
         <div className="p-4 lg:w-1/3">
             <div className="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{service.title}</h1>
-                <p className="leading-relaxed mb-3">{service.description}</p>
+                <p className="leading-relaxed mb-3">{service.summary}</p>
                 <Link   to={{
                             pathname: `/services/${service.id}`,
                             state: { service: service }
