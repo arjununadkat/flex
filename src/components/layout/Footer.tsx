@@ -14,14 +14,14 @@ class Footer extends Component {
         return (
             <footer className="text-gray-400 bg-gray-900 body-font">
                 <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-                    <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+                    {/* <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
                         <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
                         <img className="md:max-w-none mx-auto rounded" width="100" src={logo} alt=""/>
                         <p className="mt-2 text-sm text-gray-500">Corporate Information Technology Solutions Limited</p>
                         </a>
                         
-                    </div>
-                    <div className="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+                    </div> */}
+                    <div className="flex-grow flex flex-wrap -mb-10 md:text-left text-center order-first">
                         <div className="lg:w-1/3 md:w-1/2 w-full px-4">
                             <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">QUICK LINKS</h2>
                             <nav className="list-none mb-10">
@@ -44,14 +44,15 @@ class Footer extends Component {
                         <div className="lg:w-1/3 md:w-1/2 w-full px-4">
                             <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">OTHER SERVICES</h2>
                             <nav className="list-none mb-10">
-                                <li>
-                                    <a className="text-gray-400 hover:text-gray-200">IT Governance Frameworks</a>
+                            <li>
+                                    <a href="/services" className="text-gray-400 hover:text-gray-200">Unified Communications</a>
                                 </li>
                                 <li>
-                                    <a className="text-gray-400 hover:text-gray-200">Unified Communications</a>
+                                    <a href="/services" className="text-gray-400 hover:text-gray-200">IT Governance Frameworks</a>
                                 </li>
+                                
                                 <li>
-                                    <a className="text-gray-400 hover:text-gray-200">IT Support</a>
+                                    <a href="/services" className="text-gray-400 hover:text-gray-200">IT Support</a>
                                 </li>
                             </nav>
                         </div>

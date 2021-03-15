@@ -75,14 +75,20 @@ function BookDemo(props: any) {
                         <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">Flex Software Suite</h1>
                     </div>
                     <form onSubmit={sendEmail} className="lg:w-2/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+                        <div className="flex">
                         <div className="relative mb-4">
-                            <p className="leading-7 text-sm text-gray-100">Select your start (left) and end dates (right)</p>
-                            <DatePicker selected={startDate} onChange={date => state.startDate = date && setStartDate(date)} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <DatePicker selected={endDate} onChange={date => state.endDate = date && setEndDate(date)} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <p className="flex leading-7 text-sm text-gray-100">Select a date for your demo</p>
+                            <div className="flex">
+                            <DatePicker selected={startDate} onChange={date => state.startDate = date && setStartDate(date)} className="flex w-5/6 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 text-center py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            </div>
+                            
+                                {/* <DatePicker selected={endDate} onChange={date => state.endDate = date && setEndDate(date)} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" /> */}
                         </div>
-                        <div className="relative mb-4 text-gray-900">
-                            <p className="leading-7 text-sm text-gray-100">Select your Product</p>
-                            <Select options={data} onChange={selectedOption /* type is automatically inferred here */ => {
+                        </div>
+                        
+                        <div className="relative mb-8 text-gray-900">
+                            <p className="flex leading-7 text-sm text-gray-100">Select your Product</p>
+                            <Select options={data} className="w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={selectedOption /* type is automatically inferred here */ => {
                                 if (Array.isArray(selectedOption)) {
                                     throw new Error("Unexpected type passed to ReactSelect onChange handler");
                                 }
@@ -91,33 +97,40 @@ function BookDemo(props: any) {
                                 }
                             }} />
                         </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="first_name" className="leading-7 text-sm text-gray-100">First Name</label>
-                            <input type="text" id="first_name" name="first_name" onChange={e => state.first_name = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="last_name" className="leading-7 text-sm text-gray-100">Last Name</label>
-                            <input type="text" id="last_name" name="last_name" onChange={e => state.last_name = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="phone_number" className="leading-7 text-sm text-gray-100">Phone Number</label>
-                            <input type="text" id="phone_number" name="phone_number" onChange={e => state.phone_number = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="email" className="leading-7 text-sm text-gray-100">Email</label>
-                            <input type="email" id="email" name="email" onChange={e => state.email = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="address" className="leading-7 text-sm text-gray-100">Address</label>
-                            <textarea id="address" name="address" onChange={e => state.address = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                        </div>
-                        <div className="relative mb-4">
-                            <label htmlFor="questions" className="leading-7 text-sm text-gray-100">Futher Questions/Comments</label>
-                            <textarea id="questions" name="questions" onChange={e => state.questions = e.target.value} className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        <div className="inline-flex space-x-10">
+                            <div className="flex">
+                                <div className="relative mb-4">
+                                <label htmlFor="first_name" className="flex leading-7 text-sm text-gray-100 mr-2">First Name</label>
+                                <input type="text" id="first_name" name="first_name" onChange={e => state.first_name = e.target.value} className="mr-8 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+                            <div className=" flex">
+                                    <div className="relative mb-4">
+                                     <label htmlFor="last_name" className="flex leading-7 text-sm text-gray-100 mr-2">Last Name</label>
+                                        <input type="text" id="last_name" name="last_name" onChange={e => state.last_name = e.target.value} className=" bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    </div>
+                            </div>
                         </div>
 
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" type="submit">Book Product</button>
-                        <p className="text-xs text-gray-500 mt-3">We'll get back to you</p>
+                        <div className="relative mb-4">
+                        <label htmlFor="phone_number" className="flex leading-7 text-sm text-gray-100 mr-2">Phone Number</label>
+                                     <input type="text" id="phone_number" name="phone_number" onChange={e => state.phone_number = e.target.value} className="flex w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        </div>                
+                        <div className="relative mb-4">
+                            <label htmlFor="email" className="flex leading-7 text-sm text-gray-100 mr-2">Email Address</label>
+                            <input type="email" id="email" name="email" onChange={e => state.email = e.target.value} className="flex w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        </div>
+                        <div className="relative mb-4">
+                            <label htmlFor="address" className="flex leading-7 text-sm text-gray-100">Company Name and Address</label>
+                            <textarea id="address" name="address" onChange={e => state.address = e.target.value} className="flex w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                        <div className="relative mb-4">
+                            <label htmlFor="questions" className="flex leading-7 text-sm text-gray-100">Futher Questions/Comments</label>
+                            <textarea id="questions" name="questions" onChange={e => state.questions = e.target.value} className="flex w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+
+                        <button className="w-1/4 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" type="submit">Book Demo</button>
+                        <p className="flex text-xs text-gray-500 mt-3">Thank you for booking with us</p>
                     </form>
                 </div>
             </section>

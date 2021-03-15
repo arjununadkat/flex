@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { iProduct } from '../../global'
 import GetToKnowUs from '../sections/home/GetToKnowUs'
+import OurClients from '../sections/home/OurClients'
 import Hero from '../sections/home/Hero'
 import HomeProductsList from '../sections/home/HomeProductsList'
 
@@ -16,7 +17,9 @@ function Home(props: { products: Array<iProduct> }) {
             <Hero />
             <section className="text-gray-400 body-font bg-gray-900" >
                 <GetToKnowUs />
+                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Our Trending Products</h1>
                 <div className="flex flex-wrap">
+                
                     {products && products.slice(0, 4).map((product: iProduct) => {
                         return (
                             <HomeProductsList
@@ -30,6 +33,7 @@ function Home(props: { products: Array<iProduct> }) {
                     })}
 
                 </div>
+                <OurClients/>
             </section>
         </div>
 

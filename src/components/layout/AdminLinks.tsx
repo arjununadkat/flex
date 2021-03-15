@@ -5,6 +5,7 @@ import { signOut } from '../../features/actions/authActions'
 function AdminLinks(props: any) {
     return (
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <NavLink to="/" className="mr-5 hover:text-blue">Home</NavLink>
             <NavLink to="/about" className="mr-5 hover:text-blue">About Us</NavLink>
             <NavLink to="/services" className="mr-5 hover:text-blue">Services</NavLink>
             <NavLink to="/products" className="mr-5 hover:text-blue">Our Products</NavLink>

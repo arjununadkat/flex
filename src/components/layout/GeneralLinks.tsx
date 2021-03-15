@@ -5,6 +5,7 @@ function GeneralLinks() {
     return (
 
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <NavLink className="mr-5 hover:text-blue-900" to='/'>Home</NavLink>
             <NavLink className="mr-5 hover:text-blue-900" to='/about'>About Us</NavLink>
             <NavLink className="mr-5 hover:text-blue-900" to='/services'>Services</NavLink>
             <NavLink className="mr-5 hover:text-blue-900" to='/products'>Our Products</NavLink>

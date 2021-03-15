@@ -1,6 +1,6 @@
 import React from 'react'
 import History from '../sections/about/History'
-import OtherServices from '../sections/about/OtherServices'
+// import OtherServices from '../sections/about/OtherServices'
 import OurServices from '../sections/services/OurServices'
 import Values from '../sections/about/Values'
 

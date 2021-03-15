@@ -11,9 +11,9 @@ function Navbar(props: any) {
     const links = auth.uid;
     return (
         <header className="text-black bg-blue-000 body-font">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <div className="container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
                 <Link to='/' className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                    <img className="md:max-w-none mx-auto rounded" width="45" src={logo} alt=""/>
+                    <img className="md:max-w-none mx-auto rounded" width="80" src={logo} alt=""/>
                     <span className="ml-3 text-xl">CITS</span>
                 </Link>
                 {!links ? <GeneralLinks /> : (
