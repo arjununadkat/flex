@@ -7,6 +7,7 @@ import GetToKnowUs from '../sections/home/GetToKnowUs'
 import OurClients from '../sections/home/OurClients'
 import Hero from '../sections/home/Hero'
 import HomeProductsList from '../sections/home/HomeProductsList'
+import TechPartners from '../sections/home/TechPartners'
 
 function Home(props: { products: Array<iProduct> }) {
     const products = props.products;
@@ -33,6 +34,7 @@ function Home(props: { products: Array<iProduct> }) {
                     })}
 
                 </div>
+                <TechPartners/>
                 <OurClients/>
             </section>
         </div>
